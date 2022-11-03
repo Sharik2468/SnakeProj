@@ -9,6 +9,8 @@
 using namespace Gdiplus;
 #pragma comment(lib, "Gdiplus.lib")
 
+#define GameSpeed 200
+
 void RedrawGame(HDC hdc);
 void InitializeGame(HWND hwnd);
 
@@ -69,7 +71,7 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 {
 	switch (uMsg)
 	{
-	case WM_CREATE: SetTimer(hwnd, 1, 20, NULL); break;
+	case WM_CREATE: SetTimer(hwnd, 1, GameSpeed, NULL); break;
 	case WM_TIMER: InvalidateRect(hwnd, NULL, FALSE); break;
 	case WM_DESTROY: PostQuitMessage(0); return 0;
 
